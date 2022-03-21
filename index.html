@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Bootstrap 4, from LayoutIt!</title>
+
+	<meta name="description" content="Source code generated using layoutit.com">
+	<meta name="author" content="LayoutIt!">
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+
+	<script>
+		init();
+
+		function init() {
+			var audio = document.getElementById('audio');
+			var playlist = document.getElementById('playlist');
+			var tracks = playlist.getElementsByTagName('a');
+			audio.volume = 0.10;
+			audio.play();
+
+			for (var track in tracks) {
+				var link = tracks[track];
+				if (typeof link === "function" || typeof link === "number") continue;
+
+				link.addEventListener('click', function (e) {
+					e.preventDefault();
+					var song = this.getAttribute('href');
+					run(song, audio, this);
+				});
+			}
+
+			audio.addEventListener('ended', function (e) {
+				for (var track in tracks) {
+					var link = tracks[track];
+					var nextTrack = parseInt(track) + 1;
+					if (typeof link === "function" || typeof link === "number") continue;
+					if (!this.src) this.src = tracks[0];
+					if (track == (tracks.length - 1)) nextTrack = 0;
+					console.log(nextTrack);
+					if (link.getAttribute('href') === this.src) {
+						var nextLink = tracks[nextTrack];
+						run(nextLink.getAttribute('href'), audio, nextLink);
+						break;
+					}
+				}
+			});
+		}
+
+		function run(song, audio, link) {
+			var parent = link.parentElement;
+
+			//quitar el active de todos los elementos de la lista
+			var items = parent.parentElement.getElementsByTagName('li');
+			for (var item in items) {
+				if (items[item].classList)
+					items[item].classList.remove("active");
+			}
+
+			//agregar active a este elemento
+			parent.classList.add("active");
+
+			//tocar la cancion
+			audio.src = song;
+			audio.load();
+			audio.play();
+		}
+	</script>
+
+</head>
+
+<body>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="row">
+					<div class="col-md-8">
+						<h3 class="text-center">
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;">
+								</font>
+								<font style="vertical-align: inherit;"> <br>  Nadim Jabes Ignacio Sanchez
+								</font>
+							</font>
+						</h3>
+					</div>
+					<div class="col-md-4">
+						<br> <img alt="Vista previa de la imagen Bootstrap" src="images/foto_perfil.jpg" width="150"
+							height="150" class="rounded-circle">
+					</div>
+				</div>
+				<br>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<div class="carousel slide" id="carousel-481345">
+					<ol class="carousel-indicators">
+						<li data-slide-to="0" data-target="#carousel-481345">
+						</li>
+						<li data-slide-to="1" data-target="#carousel-481345">
+						</li>
+						<li data-slide-to="2" data-target="#carousel-481345" class="active">
+						</li>
+
+					</ol>
+					<div class="carousel-inner">
+						<div class="carousel-item">
+							<img class="d-block w-100" alt="Carrusel Bootstrap primero" src="images/foto_1.jpg"
+								height="750">
+							<div class="carousel-caption">
+								<h4>
+									<font style="vertical-align: inherit;">
+										<font style="vertical-align: inherit;">
+											AMIGOS DE TODA LA VIDA
+										</font>
+									</font>
+								</h4>
+								<p>
+									<font style="vertical-align: inherit;">
+										<font style="vertical-align: inherit;">
+										</font>
+										<font style="vertical-align: inherit;"> </font>
+										<font style="vertical-align: inherit;">
+										</font>
+									</font>
+								</p>
+							</div>
+						</div>
+						<div class="carousel-item">
+							<img class="d-block w-100" alt="Carrusel Bootstrap Segundo" src="images/foto_2.jpg">
+							<div class="carousel-caption">
+								<h4>
+									<font style="vertical-align: inherit;">
+										<font style="vertical-align: inherit;">
+											Presentacion en el Paraninfo DUAC
+										</font>
+									</font>
+								</h4>
+								<p>
+									<font style="vertical-align: inherit;">
+										<font style="vertical-align: inherit;">
+										</font>
+										<font style="vertical-align: inherit;"></font>
+										<font style="vertical-align: inherit;">
+										</font>
+									</font>
+								</p>
+							</div>
+						</div>
+						<div class="carousel-item active">
+							<img class="d-block w-100" alt="Carrusel Bootstrap Tercero" src="images/foto_3.jpg">
+							<div class="carousel-caption">
+								<h4>
+									<font style="vertical-align: inherit;">
+										<font style="vertical-align: inherit;">
+											FESTIDANZA 2018
+										</font>
+									</font>
+								</h4>
+								<p>
+									<font style="vertical-align: inherit;">
+										<font style="vertical-align: inherit;">
+											Ingenieria de Sistemas </font>
+										<font style="vertical-align: inherit;">
+										</font>
+										<font style="vertical-align: inherit;">
+										</font>
+									</font>
+								</p>
+							</div>
+						</div>
+
+					</div> <a class="carousel-control-prev" href="#carousel-481345" data-slide="prev"><span
+							class="carousel-control-prev-icon"></span> <span class="sr-only">
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;">Anterior</font>
+							</font>
+						</span></a> <a class="carousel-control-next" href="#carousel-481345" data-slide="next"><span
+							class="carousel-control-next-icon"></span> <span class="sr-only">
+							<font style="vertical-align: inherit;">
+								<font style="vertical-align: inherit;">Del mes próximo</font>
+							</font>
+						</span></a>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<h2>
+					<font style="vertical-align: inherit;">
+						<font style="vertical-align: inherit;">
+							Un poco sobre Mi
+						</font>
+					</font>
+				</h2>
+				<p>
+					Mi nombre es Nadim Jabes Ignacio Sanchez, naci en Cusco el 18 de febrero de 1998. Desde pequeño tuve
+					un apego hacia las matemáticas en el colegio, ya que siempre fue uno de mis cursos favoritos,
+					también tuve apego hacia el deporte del básquet, esto debido a que mi papa me introdujo al mundo de
+					este maravilloso deporte, en secundaria participé en varios concurso de matemáticas representando a
+					mi colegio que entonces era el colegio Uriel García y como también mi pasión era el deporte por un
+					tiempo pertenecí a la selección de básquet de mi colegio, ya llegando al final de mi vida escolar
+					decidí estudiar Ingeniería de Sistemas, y asi es como postule e ingrese a esta carrera en la
+					Universidad Andina del Cusco, donde actualmente estudio, en mi vida universitaria conoci gente muy
+					genial, personas que se volvieron amigos de toda la vida, tambien me desempeñe en otra
+					pasión que tenia que era la danza, así representando a mi carrera en el Festidanza en varias
+					ocasiones, tambien llegue a pertencer al Elenco de Danza Folcklorica de la universidad,
+					posteriormente me desempeñe como docente de danza y actualmente trabajo de manera
+					independiente en proyectos a fines de mi carrera a la par que sigo con mi carrera.
+				</p>
+				<p>
+					<a class="btn" href="#">Ver detalles "</a>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h1>
+						PASATIEMPOS
+					</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<h3>La Musica - Tocar Guitarra</h3><br>Soy muy aficionado a la música y de hecho uno de mis mayores hobbys es
+				tocar la guitarra, paso mucho tiempo practicando y hace poco se me dio la oportunidad de tocar con
+				amigos de la carrera para un concurso haciendo un cover, fue una muy grata experiencia.
+			</div>
+			<div class="col-md-4">
+				<iframe width="400" height="315" src="https://www.youtube.com/embed/eGUXMM0fSgE"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<h3>La Danza</h3><br>La danza formo parte importante de mi vida desde muy pequeño, pero fue en la
+				universidad empecé enserio con la danza ya que nos solo pude representar a mi carrera y a la
+				universidad en distintos concurso sino que este arte me dio oportunidades no solo de conocer más
+				gente sino también oportunidades laborales ya que actualmente me despeño como docente de
+				danza.
+			</div>
+			<div class="col-md-4">
+				<iframe width="400" height="315" src="https://www.youtube.com/embed/p1hqJvGP2Js"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-4">
+				<h3>Experiencia en Candelaria</h3><br>Como dije anteriormente la danza me abrió muchas oportunidades y una de
+				estas fue por de participar en la festividad de la Candelaria, una de las mayores festividades del Perú.
+				Donde participé como bailarín de la agrupación de Caporales Centralistas Puno, conjunto del cual
+				actualmente soy miembro.
+			</div>
+			<div class="col-md-4">
+				<iframe width="400" height="315" src="https://www.youtube.com/embed/DA2kXWtHYZs"
+					title="YouTube video player" frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
+			</div>
+			<div class="col-md-4">
+				<iframe
+					src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3838.35684890501!2d-70.03025848592091!3d-15.837831189024199!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915d69eac0006c17%3A0x9070a5e8e5c132f9!2sParque%20Pino!5e0!3m2!1ses-419!2spe!4v1647655170882!5m2!1ses-419!2spe"
+					width="400" height="315" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h1>
+						Mi Playlist
+					</h1>
+					<audio id="audio" preload="auto" tabindex="0" controls="">
+						<source src="musica/yt1s.com - Ojitos de Luna Audio.mp3">
+					</audio>
+
+					<ul id="playlist">
+						<li class="active">
+							<a href="musica/yt1s.com - Banda Calypso  Passe De Mágica DVD Pelo Brasil.mp3">
+								Banda Calypso - Passe de MAgica
+							</a>
+						</li>
+						<li>
+							<a href="musica/yt1s.com - KNAAN  Bang Bang ft Adam Levine.mp3">
+								K'NAAN - Bang Bang ft. Adam Levine
+							</a>
+						</li>
+						<li>
+							<a
+								href="musica/yt1s.com - Fe y Devoción  Apasionados.mp3">
+								Fe y Devoción - Apasionados
+							</a>
+						</li>
+						<li>
+							<a
+								href="musica/yt1s.com - Stevie Wonder  Part Time Lover Official Video.mp3">
+								Stevie Wonder - Part Time Lover
+							</a>
+						</li>
+						<li>
+							<a
+								href="musica/yt1s.com - RAÍCES DE JAUJA  MI DUEÑA.mp3">
+								Raices de Jauja - Mi Dueña
+							</a>
+						</li>
+					</ul>
+					<form>
+						<abbr title="LIsta"></abbr> <a title="FB" href="https://open.spotify.com/playlist/2YzXRJInMO5ZbhR4oQ5btl"><img src="images/spo.jpg"
+							alt="Lista" width="210" height="70" /></a>						
+					</form>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col-md-12">
+
+				<h1>Redes Sociales y Contacto</h1>
+				<form>
+					<a title="FB" href="https://www.facebook.com/nadimjabes.ignasiosanchez/"><img src="images/fb.jpg"
+							alt="Face Book" width="50" height="50" /></a>
+					<a title="Instagram" href="https://www.instagram.com/"><img src="images/inst.jpg" alt="Instagram"
+							width="50" height="50" /></a>
+					<img src="images/wpp.jpg" alt="whatsapp" width="50	" height="50"><abbr title="telefono"></abbr>
+					953287247
+				</form>
+
+				<address>
+					<strong></strong><br> APV Picol Mujumpata E-1<br> San Jeronimo, Cusco
+					
+				</address>
+			</div>
+			
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h3 class="text-center text-muted">
+					Derechos Reservados<br>Nadim Jabes Ignacio Sanchez
+				</h3>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/scripts.js"></script>
+</body>
+
+</html>

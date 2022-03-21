@@ -1,0 +1,38 @@
+# Empty CSS file for your own CSS
+ #playlist, audio{
+    background:#666;
+    width:400px;
+    padding:20px;
+    list-style: none;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+ a {
+    text-decoration:none;
+  }
+ .active a {
+    color:#5DB0E6;
+    text-decoration:none;
+  }
+ li a{
+    color:#eeeedd;
+    background:#333;
+    padding:5px;
+    display:block;
+  }
+ li a:hover{
+    text-decoration:none;
+  }
+ .container-fluid{
+    background-color: #979da38c ;
+  }
+ .text-center{
+  font-style: italic;
+  font-size: 50px;
+ }
+ .text-muted{
+  background:#333;
+  height: 120px;
+ }
+ .row{
+ font-size: 18px; 
+ }
